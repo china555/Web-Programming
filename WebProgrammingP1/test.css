@@ -1,0 +1,82 @@
+/* set navigation bar configuration */
+.nav_second a {
+    font-family: 'Sriracha', cursive;
+    font-size: 20px;
+    color: black;
+    height: 50px;
+    border-radius: 0;
+}
+
+.nav_second a:hover {
+    background-color: rgb(130, 216, 130, 0.4);
+    font-size: 30px;
+}
+
+
+/* set navigation bar social media link image */
+.sns a img {
+    width: 35px;
+}
+
+.sns a img:hover {
+    opacity: 0.8;
+}
+
+/* set main container configuration */
+main {
+    border-top: 10px solid #77CFAD;
+    /* margin-bottom: 20px; */
+}
+
+
+/* set footer configuration */
+footer {
+    background-color: #77CFAD;
+    height: 100px;
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /*左右中央揃え*/
+    align-items: center;
+    /*上下中央揃え*/
+}
+
+footer h5 {
+    display: block;
+}
+
+/* unique css description for home file */
+.col-8 {
+    height: 50vh;
+    margin: 0 auto;
+}
+
+.top {
+    border-bottom: 10px solid #77CFAD;
+    background-color: rgba(149, 218, 191, 0.857);
+}
+
+.top_image {
+    height: 100%;
+    width: 100%;
+    background-image: url(image/top.jpg);
+    background-repeat: no-repeat;
+    background-size: 170%;
+    background-position: 50% 55%;
+    /* background-attachment: fixed;     背景の位置指定 */
+    justify-content: center;
+    opacity: 0.9;
+}
+
+@media screen and (min-width: 768px) {
+    .odd {
+        margin-bottom: 200px;
+        margin-top: 50px;
+    }
+
+    .even {
+        margin-top: 250px;
+    }
+
+}
