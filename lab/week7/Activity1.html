@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Activity2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("h1").click(function () {
+                $(this).hide();
+            });
+            $('h2').dblclick(function(){
+                $(this).hide();
+            });
+            $('.bt1').click(function(){
+                $('h3').show();
+            });
+            $('.bt2').click(function(){
+                $('h3').hide();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Click me away!</h1>
+    <h2>Double click on me</h2>
+    <h3>Click on hide button I will disappear</h3>
+    <button class="bt1">show</button>
+    <button class="bt2">hide</button>
+</body>
+
+</html>

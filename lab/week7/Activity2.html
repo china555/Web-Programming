@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Activity2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var json = [];
+            var id1 = document.getElementById("ID")
+            var firstname1 = document.getElementById('Fn')
+            var Lastname1 = document.getElementById('Ln')
+            $('.submit').click(function () {
+                var student = {
+                    ID: id1.value,
+                    Firstname: firstname1.value,
+                    Lastname: Lastname1.value
+                };
+                json.push(student);
+                console.log(JSON.stringify(json))
+            });
+            $("#he").click(function () {
+                $("#llo").slideDown("slow")
+            });
+        });
+    </script>
+    <style>
+        .he {
+            font-size: 50px;
+            background-color: aquamarine;
+            margin-bottom: 90px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="he" class="he">
+        Form
+    </div>
+    <div id="llo" style="display:none">
+        ID:
+        <input type="text" id="ID"><br><br>
+        Firstname
+        <input type="text" id="Fn"><br><br>
+        Lastname
+        <input type="text" id="Ln"><br>
+        <button class="submit" type="button">submit</button>
+    </div>
+</body>
+
+</html>
