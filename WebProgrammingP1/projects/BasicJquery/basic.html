@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1 id="first">Click me away!</h1>
+    <h2 id="second">Double click on me</h2>
+    <h2 id="third">Click on hide button I will disappear</h2>
+
+    
+
+    <button id="hide_value">Hide</button>
+    <button id="show_value">Show</button>
+
+
+    <h1 id="extend">Click here to open form</h1>
+        <!-- <h1 id="hide">Click here to open form</h1> -->
+    <div id="form_cover">
+        <form id="form_area" name="student_info">
+            <fieldset>
+                <label for="num">StudentID:</label><input id="num" type="number" name="studentid">
+                <label>First Name：</label><input id="f_name" type="text" name="firstname">
+                <label>Second Name:</label><input id="l_name" type="text" name="secondname">
+            </fieldset>
+        </form>
+        <button id="sub_form">Submit</button>
+    </div>
+
+
+    <script type="text/javascript">
+
+        $(window).on('load', function(){
+            $('div#form_cover').hide();
+        })
+        $('h1#first').click(function(){
+            $('h1#first').hide();
+        });
+
+        $('h2#second').dblclick(function(){
+            $('h2#second').hide();
+        });
+
+        $('button#hide_value').click(function(){
+            $('h2#third').hide();
+        })
+
+        $('button#show_value').click(function(){
+            $('h2#third').show();
+        })
+
+        $('h1#extend').click(function(){
+            $('div#form_cover').show(1000);
+        })
+        // $('h1#hide').click(function(){
+        //     $('form#form_area').hide(1000);
+        // })
+
+        $('button#sub_form').click(function(){
+            var form = document.forms.student_info;
+            // document.getElementById('num').value
+            // document.getElementById('l_name').value
+            // document.getElementById('l_name').value
+            var json_array = []
+            var student_info ={ id : form.studentid.value, firstname : form.firstname.value, secondname : form.secondname.value };
+            json_array.push(student_info);
+
+            // console.log(json_array);
+            console.log(JSON.stringify(json_array));
+        })
+
+        // function sub_form(){
+        //     var form = document.forms.student_info;
+        //     // document.getElementById('num').value
+        //     // document.getElementById('l_name').value
+        //     // document.getElementById('l_name').value
+        //     var json_array = []
+        //     var student_info ={ id : form.studentid.value, firstname : form.firstname.value, secondname : form.secondname.value };
+        //     json_array.push(student_info);
+
+        //     console.log(json_array);
+        // }
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

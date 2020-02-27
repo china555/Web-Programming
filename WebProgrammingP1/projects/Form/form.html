@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Activity 2</title>
+</head>
+
+<body bgcolor="#E6F2FF">
+    <!-- Your Code for Activity 2 -->
+    <form action="form_response.html" method="POST">
+        <fieldset>
+            <legend><b>Registration</b></legend>
+            <table border="1" align="center">
+                <tr>
+                    <th colspan="2">
+                        <font size="4">Please fill in your personal info</font>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="width: 100px;"><b>Student ID</b></th>
+                    <th style="width: 200px;" align="left"><input type="text" name="studentID" pattern="[0-9]{7}" title="please type 7 digit number"></th>
+                </tr>
+                <tr>
+                    <th><b>First name</b></th>
+                    <th align="left"><input type="text" name="firstName" pattern="[A-Za-z]{}" title="please type only letters"></th>
+                </tr>
+                <tr>
+                    <th><b>Last name</b></th>
+                    <th align="left"><input type="text" name="lastName" pattern="[A-Za-z]{}" title="please type only letters"></th>
+                </tr>
+                <tr>
+                    <th><b>Birthday</b></th>
+                    <th align="left"><input type="date" name="birthday" max="2020-01-27"></th>
+                </tr>
+                <tr>
+                    <th><b>Gender</b></th>
+                    <th align="left"><input type="radio" name="sex" value="Female" checked>Female<br><input type="radio" name="sex" value="Male">Male</th>
+                </tr>
+                <tr>
+                    <th><b>Hobbies</b></th>
+                    <th align="left">
+                        <input type="checkbox" name="hobby" value="Drawing">Drawing<br>
+                        <input type="checkbox" name="hobby" value="Hiking">Hiking<br>
+                        <input type="checkbox" name="hobby" value="Programming">Programming<br>
+                        <input type="checkbox" name="hobby" value="Photography">Photography<br>
+                        <input type="checkbox" name="hobby" value="Running">Running<br>
+                    </th>
+                </tr>
+                <tr>
+                    <th><b>E-mail</b></th>
+                    <th align="left"><input type="email" name="email" placeholder="---E-mail---" required title="email is required to submit"></th>
+                </tr>
+
+            </table>
+            <div align="center">
+                <button type="submit">Submit</button>
+                <button type="reset">Clear</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        input[type=button] {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        input[type=text] {
+            width: 280px;
+            height: 50px;
+            display: block;
+            margin: 15px auto;
+            padding: 0 10px;
+            font-size: 28px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body style="text-align: center">
+    <form name="FormCalculator">
+        <h1>Simple Calculator</h1>
+        <input name="Screen" id="output" type="Text" size="24" value="0" readonly>
+
+        <input id="btn7" type="Button" value="7" onclick="NumPressed(this)">
+        <input id="btn8" type="Button" value="8" onclick="NumPressed(this)">
+        <input id="btn9" type="Button" value="9" onclick="NumPressed(this)">
+        <input id="btnmultiply" type="Button" value="*" onclick="Operation(this)">
+        <br />
+
+        <input id="btn4" type="Button" value="4" onclick="NumPressed(this)">
+        <input id="btn5" type="Button" value="5" onclick="NumPressed(this)">
+        <input id="btn6" type="Button" value="6" onclick="NumPressed(this)">
+        <input id="btnminus" type="Button" value="-" onclick="Operation(this)">
+
+        <br />
+
+        <input id="btn1" type="Button" value="1" onclick="NumPressed(this)">
+        <input id="btn2" type="Button" value="2" onclick="NumPressed(this)">
+        <input id="btn3" type="Button" value="3" onclick="NumPressed(this)">
+        <input id="btnplus" type="Button" value="+" onclick="Operation(this)">
+
+        <br />
+
+        <input id="btnC" type="Button" value="C" onclick="Clear()">
+        <input id="btn0" type="Button" value="0" onclick="NumPressed(this)">
+        <input id="btndecimal" type="Button" value="." onclick="Decimal()">
+        <input id="btndivide" type="Button" value="/" onclick="Operation(this)">
+        <br />
+        <input id="btnequals" style="width: 294px" type="Button" value="=" onclick="Operation(this)">
+    </form>
+
+    <script>
+        var Calculator = document.FormCalculator;
+        var Accumulate = 0; // to store the result of accumulation
+        var Accumulate_array = []; // this array would store multiple numbers of value and operation
+        var formula = ""; // sumarize all elements in side of accumulate_array
+        var FlagNewNum = false; // To check whether the number is new number
+        var PendingOp = ""; // to store the pending operation
+        var result = 0; // this variable would store calculated value when "=" pressed
+        var number = document.getElementById("output");
+        let mode ="integer_mode"; // this would recognize wether its appropriate to put decimal "." or not
+
+
+        function NumPressed(Num)
+        {
+            // recognize whether current value is 0 or not.
+            if(number.value == 0 && mode === "integer_mode"){
+                number.value = parseInt(Num.value);
+            }
+            else{
+                number.value += parseInt(Num.value);
+            }
+            // If number button is pressed, show number on the screen
+            //if it is still the same number, add new digit to the the number
+            //else show the new number on the screen
+
+        }
+
+        function Operation(Op)
+        {
+            // If operation button is pressed for first time, set the pending operation
+            //else do the arithmetic of the pending opearion 
+            //and set the lastest opeaation as the new pending opeation 
+            if(Op.value == "-"){
+                Accumulate_array.push(number.value, Op.value); // Adding key value and opetation to array
+                Accumulate = number.value; // Replacing value. This variable is used for task without extra task
+                PendingOp = "-"; // Replacing value. This variable is used for task without extra task
+                FlagNewNum = true; // Switching whether boolean value to let them be calculated
+                number.value = 0; // refresh displayed value to 0
+                mode = "integer_mode"; // refresh mode
+            }
+            else if(Op.value == "+"){
+                Accumulate_array.push(number.value, Op.value);
+                Accumulate = number.value;
+                PendingOp = "+";
+                FlagNewNum = true;
+                number.value = 0;
+                mode = "integer_mode";
+            }
+            else if(Op.value == "/"){
+                Accumulate_array.push(number.value, Op.value);
+                Accumulate = number.value;
+                PendingOp = "/";
+                FlagNewNum = true;
+                number.value = 0;
+                mode = "integer_mode";
+            }
+            else if(Op.value == "*"){
+                Accumulate_array.push(number.value, Op.value);
+                Accumulate = number.value;
+                PendingOp = "*";
+                FlagNewNum = true;
+                number.value = 0;
+                mode = "integer_mode";
+            }
+            if(Op.value == "=" && FlagNewNum == true){
+                // making formula
+                for(let i = 0; i < Accumulate_array.length; i++){
+                    formula += Accumulate_array[i];
+                }
+                // using the formula below for non-extra task
+                // result = eval(Accumulate+PendingOp+number.value);
+                result = eval(formula+number.value);
+                // displaying result
+                number.value = result;
+            }
+        }
+        function Decimal()
+        {
+            //If it is the first time of inserting number, start with 0 and follow by point (0.)
+            //else if it has no decimal point before, add decimal point to the number
+            //then show number on the screen 
+            
+
+            // if current mode is "integer_mode", user would able to put decimal
+            if(mode === "integer_mode"){
+                if(number.value == "0"){
+                number.value = "0.";
+                }
+                else{
+                number.value += ".";
+                }
+                mode = "decimal_mode";
+            }
+            
+        }
+
+        function Clear() 
+        {
+
+            //Clear Entry
+            number.value = 0;
+            Accumulate = 0; // to store the result of accumulation
+            FlagNewNum = false; // To check whether the number is new number
+            PendingOp = ""; // to store the pending operation
+            result = 0;
+            mode ="integer_mode";
+            Accumulate_array = [];
+            formula = "";
+        }
+    </script>
+</body>
+</html>
