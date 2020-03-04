@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+body{
+    margin:0;
+    background-color: rgba(142, 214, 240, 0.768);
+}
+.cat{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn{
+    width: 100%; 
+    text-align: center;
+}
+.output{
+    width: 100%;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.box{
+    justify-content:space-between;
+    padding-bottom: 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
