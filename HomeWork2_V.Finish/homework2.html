@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lucky</title>
+    <link rel="stylesheet" href="lucky.css">
+    <script src="lucky.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="header">Lucky Phone Number <span id="category"></span></h1>
+        <div class="output" id="output">
+
+        </div>
+        <form action=""  method="POST">
+            <div class="box">
+                1 <input type="checkbox" name="num" id="one_id" value="1">
+                2 <input type="checkbox" name="num" id="two_id" value="2">
+                3 <input type="checkbox" name="num" id="three_id" value="3">
+                4 <input type="checkbox" name="num" id="four_id" value="4">
+                5 <input type="checkbox" name="num" id="five_id" value="5">
+                6 <input type="checkbox" name="num" id="six_id" value="6">
+                7 <input type="checkbox" name="num" id="seven_id" value="7">
+                8 <input type="checkbox" name="num" id="eight_id" value="8">
+                9 <input type="checkbox" name="num" id="nine_id" value="9">
+                0 <input type="checkbox" name="num" id="zero_id" value="0">
+            </div>
+            <div class="cat">
+                <select id="Category" onchange="select_cat()" required>
+                    <option value="">Choose...</option>
+                    <option value="Work">Work</option>
+                    <option value="Love">Love</option>
+                    <option value="Wealth">Wealth</option>
+                    <option value="Merchandising">Merchandising</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Education">Education/Wiseness</option>
+                </select>
+            </div>
+            <div class="btn">
+                Please Input 3 digits: <input type="text" maxlength="3" id="threedigit" onchange="init_phone()">
+                <input type="button" onclick="generate()" value="Generate"></input>
+                <input type="button" onclick="generateExtra()" value="Extra">
+            </div>
+        </form>
+        <div id="extra" class="output2">
+
+        
+        </div>
+    </div>
+</body>
+
+</html>
