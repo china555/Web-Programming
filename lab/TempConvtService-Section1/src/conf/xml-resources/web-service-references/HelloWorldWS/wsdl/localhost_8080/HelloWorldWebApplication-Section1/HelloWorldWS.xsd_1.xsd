@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.2 (UNKNOWN-17d59c9; 2018-09-26T15:16:30-0700) JAXWS-RI/2.3.1 JAXWS-API/2.3.1 JAXB-RI/2.3.1 JAXB-API/2.3.1 svn-revision#unknown. --><xs:schema xmlns:tns="http://tutews1.itcs212/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://tutews1.itcs212/">
+
+<xs:element name="CelsiusToFahrenheit" type="tns:CelsiusToFahrenheit"/>
+
+<xs:element name="CelsiusToFahrenheitResponse" type="tns:CelsiusToFahrenheitResponse"/>
+
+<xs:element name="ConvertercmToInch" type="tns:ConvertercmToInch"/>
+
+<xs:element name="ConvertercmToInchResponse" type="tns:ConvertercmToInchResponse"/>
+
+<xs:element name="getMydetail" type="tns:getMydetail"/>
+
+<xs:element name="getMydetailResponse" type="tns:getMydetailResponse"/>
+
+<xs:element name="hello" type="tns:hello"/>
+
+<xs:element name="helloResponse" type="tns:helloResponse"/>
+
+<xs:element name="squareMethod" type="tns:squareMethod"/>
+
+<xs:element name="squareMethodResponse" type="tns:squareMethodResponse"/>
+
+<xs:complexType name="ConvertercmToInch">
+<xs:sequence>
+<xs:element name="number" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ConvertercmToInchResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMydetail">
+<xs:sequence>
+<xs:element name="getby_id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMydetailResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CelsiusToFahrenheit">
+<xs:sequence>
+<xs:element name="number" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CelsiusToFahrenheitResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="squareMethod">
+<xs:sequence>
+<xs:element name="number" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="squareMethodResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
