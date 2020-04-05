@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyAWCeMI4QmKOawb9kym3uZ3SiJMCJ8pFVY";
+const API_KEY = "AIzaSyDLRdnFCYofzUQtdoZ9rUoPWRqVq8PgjAs";
 
 function videoCard(title, videoId, thumbnails) {
     return `
