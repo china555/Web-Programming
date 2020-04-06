@@ -15,9 +15,7 @@ function videoCard(title, videoId, thumbnails) {
 function callYouTubeAPI(value) {
     $('#loading').show();
     const URL = `https://content.googleapis.com/youtube/v3/search?part=snippet&maxResults=21&q=${value}&type=video&key=${API_KEY}`;
-    $.get(URL, function ({
-        items
-    }, status) {
+    $.get(URL, function ({items}, status) {
         // iterate each element to render
         items.map(function (value) {
             $("#list-videos").append(
