@@ -1,0 +1,41 @@
+.container {
+    padding-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+body {
+    margin: 0px;
+}
+
+.con {
+    font-size: 32px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.con2 {
+    margin-top: 2%;
+    font-size: 50px;
+    width: 100%;
+}
+
+.container>div>a {
+    font-size: 20px;
+    color: blue;
+}
+
+.container>div>span {
+    font-size: 20px;
+}
+
+.Source {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+div>li {
+    padding-left: 30px;
+}

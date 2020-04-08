@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" style="padding-bottom: 4%; background-color: rgb(213, 215, 216);">
+        <h1 style="width: 100%; font-size: 50px;">
+            Node.js
+        </h1>
+        <li>is a JavaScript runtime environment. Sounds great, but what does that mean? How does that work?</li>
+        <li>run-time environment includes everything you need to execute a program written in JavaScript.</li>
+        <li> came into existence when the original developers of JavaScript extended it from something you could only
+            run in the browser to something you could run on your machine as a standalone application.</li>
+    </div>
+    <div class="container">
+        <h1 style="width: 100%; font-size: 40px;">Why Node.js?</h1>
+        <p>Here’s a formal definition as given on the official Node.js website:
+            <br><br>
+            Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine.
+            <br><br>
+            Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.
+            <br><br>
+            Node.js’ package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+            We already discussed the first line of this definition: “Node.js® is a JavaScript runtime built on Chrome’s
+            V8 JavaScript engine.” Now let’s understand the other two lines so we can find out why Node.js is so
+            popular.
+            <br><br>
+            I/O refers to input/output. It can be anything ranging from reading/writing local files to making an HTTP
+            request to an API.
+            <br><br>
+            I/O takes time and hence blocks other functions.
+            <br><br>
+            Consider a scenario where we request a backend database for the details of user1 and user2 and then print
+            them on the screen/console. The response to this request takes time, but both of the user data requests can
+            be carried out independently and at the same time.</p>
+        <h1 style="width: 100%; font-size: 40px;">Blocking I/O</h1>
+        <p>In the blocking method, user2's data request is not initiated until user1's data is printed to the screen.
+            <br><br>
+            If this was a web server, we would have to start a new thread for every new user. But JavaScript is
+            single-threaded (not really, but it has a single-threaded event loop, which we’ll discuss a bit later). So
+            this would make JavaScript not very well suited for multi-threaded tasks.
+            <br><br>
+            That’s where the non-blocking part comes in.</p>
+        <h1 style="width: 100%; font-size: 40px;">Non-blocking I/O</h1>
+        <p>
+            On the other hand, using a non-blocking request, you can initiate a data request for user2 without waiting
+            for the response to the request for user1. You can initiate both requests in parallel.
+            <br><br>
+            This non-blocking I/O eliminates the need for multi-threading since the server can handle multiple requests
+            at the same time.
+        </p>
+    </div>
+</body>
+
+</html>
