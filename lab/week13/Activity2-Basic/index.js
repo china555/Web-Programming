@@ -16,14 +16,20 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+
+function render() {
+
+}
+
 app.use('/', router);
 router.get('/', function (req, res) {
     connection.connect(function (err) {
         if (err) throw err;
         console.log("Connected DB:" + process.env.MYSQL_DATABASE);
         /* Prepare HTML */
-        var output = '<!DOCTYPE html><html lang="en">';
-        output += `<head><title>Student List</title>
+        var output = `<!DOCTYPE html><html lang="en">`;
+        output += `<head>
+        <title>Student List</title>
         <style>
             table,th, td 
             {
@@ -50,13 +56,25 @@ router.get('/', function (req, res) {
                     <td class = "big">Name</td>
                     <td class = "big">DoB</td>
                     <td class = "big">Mobile</td></tr>`
-            result.map((value) => {
+            result.forEach(value => {
                 const Date = value.DOB
                 output += `<tr><td>${value.Firstname} ${value.Lastname}</td>
                 <td>${Date.getDate()}-${months[Date.getMonth()]}-${Date.getFullYear()}</td>
                 <td>${value.Phone}</td></tr>`
-            })
-            output += `</body></html>`;
+            });
+            output += `</table><form action="/submit-form" method="POST">
+            <label for="ID">ID:</label><br>
+            <input type="text" id="id" name="id"><br>
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" maxlength="50"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" maxlength="50"><br>
+            <label for="DOB">Date of Birth:</label><br>
+            <input type="date" id="DOB" name="DOB"><br>
+            <label for="phone">Phone:</label><br>
+            <input type="text" id="phone" name="phone" maxlength="10"><br><br>
+            <input type="submit" value="Submit"></form>
+            </body></html>`;
             res.send(output);
             res.end();
             connection.end();
