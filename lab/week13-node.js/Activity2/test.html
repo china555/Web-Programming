@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Student List</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+
+        tr>td {
+            padding: 12px;
+            font-size: 20px;
+        }
+
+        .big {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Student List</h1>
+    <ul>";
+        <table style="width:100%">
+            <tr style="font-size: 30px;">
+                <td class="big">Name</td>
+                <td class="big">DoB</td>
+                <td class="big">Mobile</td>
+            </tr>
+
+
+        </table><form action="/submit-form" method="POST">
+            <label for="ID">ID:</label><br>
+            <input type="text" id="id" name="id"><br>
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" maxlength="50"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" maxlength="50"><br>
+            <label for="DOB">Date of Birth:</label><br>
+            <input type="date" id="DOB" name="DOB"><br>
+            <label for="phone">Phone:</label><br>
+            <input type="text" id="phone" name="phone" maxlength="10"><br><br>
+            <input type="submit" value="Submit"></form>
+            </body></html>
