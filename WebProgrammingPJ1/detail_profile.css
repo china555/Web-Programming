@@ -1,0 +1,87 @@
+/* unique css description for members.html */
+
+.panel {
+    height: 70vh;
+}
+
+.subpanel {
+    height: 20vh;
+}
+
+.image_picture {
+    width: 100%;
+    margin: auto;
+}
+
+.pro_information {
+    width: 80%;
+    height: 100%;
+    padding: 5% 0 0 5%;
+    font-family: 'Sriracha', cursive;
+    padding-left: 5%;
+}
+
+/* assign color for each member of background */
+#china {
+    background-color: rgb(88, 180, 180, 0.7);
+}
+
+#nam {
+    background-color: rgb(231, 126, 126, 0.7);
+}
+
+#krit {
+    background-color: rgb(238, 238, 153, 0.7);
+}
+
+#eijiro {
+    background-color: rgb(158, 235, 158);
+}
+
+/* assign size and shape to container, row, image */
+.container-fluid {
+    padding: 0;
+}
+
+.row {
+    margin-right: 0;
+}
+
+.image_picture img {
+    width: 100%;
+}
+
+
+
+/* assign changes for h tag, some images, panels when the width of window is less than 966px */
+@media screen and (max-width: 966px) {
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    h3 {
+        font-size: 15px;
+    }
+    .image_picture img {
+        width: 100%;
+    }
+    .image_picture {
+        width: 70%;
+    }
+    .panel {
+        height: 70%;
+    }
+    .subpanel {
+        height: 20%;
+    }
+    .link_socialmedia {
+        position: absolute;
+        right: 5%;
+        bottom: 0;
+    }
+    .link_socialmedia a img {
+        width: 64px;
+    }
+}

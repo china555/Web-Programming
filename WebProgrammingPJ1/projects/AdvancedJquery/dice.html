@@ -1,0 +1,164 @@
+<style>
+    #dice {
+        font-size: 4.6rem;
+    }
+    
+    div {
+        text-align: center;
+    }
+    
+    .numberInput {
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .box {
+        display: box;
+        height: 1000px;
+        display: -moz-box;
+        -moz-box-orient: horizontal;
+        display: -webkit-box;
+        -webkit-box-orient: horizontal;
+        display: box;
+        box-orient: horizontal;
+    }
+    
+    .box .column1 {
+        -moz-box-flex: 1.0;
+        -webkit-box-flex: 1.0;
+        -ms-flex: 1.0;
+        box-flex: 1.0;
+        background: #FDF3E7;
+    }
+    
+    .box .column2 {
+        -moz-box-flex: 1.0;
+        -webkit-box-flex: 1.0;
+        -ms-flex: 1.0;
+        box-flex: 1.0;
+    }
+    
+    #searchResult {
+        font-size: 1.5rem;
+        text-align: left;
+        padding-left: 30px
+    }
+</style>
+<div class="box">
+    <div class="column1">
+        <br />
+        <h1>Dice Roller</h1>
+
+        <h2>Please input number of round</h2>
+        <input type="number" min="1" value="1" class="numberInput" id="roundInput">
+        <input id="rollbtn" type="button" class="numberInput" value="Roll">
+        <div id="dice"></div>
+    </div>
+    <div class="column2">
+        <br />
+        <h1>Search</h1>
+        <h2>Please input #round to search</h2>
+        <input type="number" min="1" value="1" class="numberInput">
+        <input type="button" class="numberInput" value="Search" id="roundSearch">
+        <div id="searchResult"></div>
+    </div>
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        //Use JQuery to get value from HTML elements
+        $('input#rollbtn').click(function(){
+            var round_value = $('#roundInput').val()
+            console.log(round_value)
+            var rolling_result = rollTheDice(round_value);
+            $('#dice').html(rolling_result)
+        })
+
+        $('input#roundSearch').click(() => {
+            let target = Number($('body > div > div.column2 > input[type="number"]:nth-child(4)').val())
+
+            var res = searchTheDice(target)
+            
+            $('div#searchResult').html(res)
+        })
+        //Use JQuery to add events (e.g. click) to HTML elements 
+
+        //Output the dice faces to <div id="dice"></div>
+
+        //Output the list of faces for search to <div id="searchResult"></div>
+    });
+
+    function rollTheDice(RoundText) {
+        var i, j,faceValue,output = '',diceCount = 3;
+        var sum = 0;
+        var rolling_result_collection = [];
+
+
+        for (j = 1; j <= RoundText; j++) {
+            var rolling_result = []; // [3]
+            for (i = 0; i < diceCount; i++) {
+                /*
+                    - Random the face of dice
+                    - Store the data into Local Storage
+                */
+
+                rolling_result.push(Math.floor(Math.random() * 10000) % 6 + 1)
+                
+                // output += "&#x268" + faceValue + "; "; //Get dice face
+            }
+            if(rolling_result.reduce((acc, val) => acc + val) >= 12){
+                rolling_result_collection.push({
+                    key: j,
+                    d_val: rolling_result
+                })
+            }
+
+
+        }
+        localStorage.setItem('index', JSON.stringify(rolling_result_collection))
+        console.log(rolling_result_collection)
+        i = 0
+        j = 0
+        for(i = 0 ; i < rolling_result_collection.length ; i++) {
+            const gameData = rolling_result_collection[i]
+
+            const round = gameData.key
+            const diceValue = gameData.d_val
+
+            output+= round + '. '
+
+            for(j = 0 ; j < diceValue.length ; j++) {
+                output += "&#x268" + (diceValue[j] - 1) + "; "
+            }
+
+            output += '<br />'
+        }
+
+        return output;
+    }
+
+    function searchTheDice(RoundText) {
+
+        // input: The round that you want to search for faces from Local Storage.
+        
+        // output: The list of faces.
+        let gameData = JSON.parse(localStorage.getItem('index'))
+        let output = ''
+        let i = 0, j = 0
+
+        for (i = 0 ; i < gameData.length ; i++) {
+            const data = gameData[i]
+            if (data.key === RoundText) {
+                output += 'Round number: ' + data.key + '<br />'
+                for (j = 0; j < data.d_val.length; j++){
+                    output += 'Dice ' + (j + 1) + ' = ' + data.d_val[j] + '<br />'
+                }
+            }
+        }
+
+        return output
+    }
+</script>

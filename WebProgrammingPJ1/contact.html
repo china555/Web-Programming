@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-widths, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- connecting external CSS file -->
+    <link rel="stylesheet" href="template.css">
+    <link rel="stylesheet" href="contact.css">
+    <!-- import google font -->
+    <link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet">
+    <script src="contact.js"></script>
+</head>
+    
+<body>
+    <!-- static header description -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-light gnav">
+            <div class="container-fluid">
+                <a class="navbar-brand mr-4" href="home.html"
+                    style="font-family: 'Sriracha', cursive; font-size: 30px;">Meet Team</a>
+
+                <ul class="nav justify-content-end sns">
+                    <li class="nav-item">
+                        <a class="nav-link" target=”_blank”
+                            href="https://web.facebook.com/ict.mahidol.university/?__xts__[0]=68.ARBVjZftjVEtcZT1RXVmAVbmBWeCcqeWG3AMj4oP4ymdLxh_7oncgRarsDmTdw-6CxSW8Hv0awtPDVo_mRroaZDCHEKOnsWRdERV5IRXjHhFmHvkNk_qdmuS8VrTfM5cByAsYGTcdLIsnOEfUode_OBJTPHJAlYqVNcJkqLdRqrzZjlvx4IJ5zcX4JRGJb_5eZ4O4NrIH3kSn5tCBs3cGdH2It4HclpTeZMW1o1esht4ivvrHLbwczs8N8Bz9e4VGAnDQ3eRB2ZpslhUmrRBRRLLmhDbaHiRw87xq6Gz-OJB-N0DQT9wROEg3r8Cce3Ban-5M9jHyuGN_mT7pAps"><img
+                                src="icon/facebook.png"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target=”_blank” href="https://www.instagram.com/muictpr/"><img
+                                src="icon/instagram.png"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- navigation bar menu for every page -->
+        <nav class="nav nav-pills nav-justified nav_second">
+            <a class="nav-item nav-link" href="home.html">HOME</a>
+            <a class="nav-item nav-link" href="aboutpage.html">ABOUT</a>
+            <a class="nav-item nav-link" href="contact.html">CONTACT</a>
+            <a class="nav-item nav-link" href="gallery.html">PROJECT</a>
+        </nav>
+    </header>
+
+    <!-- main container -->
+    <main role="main" class="container-fluid">
+        <div class="row" style="padding-bottom: 15%;">
+            <!-- first column -->
+            <div class="col-lg-6 contact-form-krit">
+                <h1>Contact Us</h1>
+                <h5>China Corporation wants to know your feedback</h5>
+                <div class="txtb-krit">
+                    <label>Full Name :</label>
+                    <input type="text" placeholder="Enter Your Name" id="nameid">
+                </div>
+
+                <div class="txtb-krit">
+                    <label>Email :</label>
+                    <input type="email" name="" placeholder="Enter Your Email" id="email_id" required>
+                </div>
+
+                <div class="txtb-krit">
+                    <label>Phone Number :</label>
+                    <input type="tel" pattern="[0-9]{10}" name="tel" placeholder="Enter Your Phone Number" id="phone_id"
+                        required>
+                </div>
+
+                <div class="txtb-krit">
+                    <label>Message :</label>
+                    <textarea></textarea>
+                </div>
+                <a class="btn-krit" id="send_info" onclick="submit()">Send</a>
+            </div>
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Thank you</h2>
+                        <span class="close-1" style="cursor: pointer;">&times;</span>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <h3>China Corporation</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- second column -->
+            <div id="map-container-google-2" class="col-lg-6 z-depth-1-half map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.742274911081!2d100.3225360148309!3d13.794403990319893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2938b7dca4d8f%3A0x18cb4e1c1854103a!2sFaculty%20of%20Information%20and%20Communication%20Technology!5e0!3m2!1sen!2sth!4v1582264571481!5m2!1sen!2sth"
+                    frameborder="0" style="border:0; width:100%; height: 70vh;" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- footer description -->
+    <footer class="fixed-bottom">
+        <h5>Copyright © 2020 China corporation, All Rights Reserved.</h5>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

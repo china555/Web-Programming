@@ -1,0 +1,45 @@
+/* set navigation bar configuration */
+.nav_second a {
+    font-family: 'Sriracha', cursive;
+    font-size: 20px;
+    color: black;
+}
+
+.nav_second a:hover {
+    background-color: rgb(130, 216, 130);
+}
+
+/* set navigation bar social media link image */
+.sns a img {
+    width: 35px;
+}
+
+.sns a img:hover {
+    opacity: 0.8;
+}
+
+/* set main container configuration */
+main {
+    border-top: 10px solid #77CFAD;
+    /* margin-bottom: 20px; */
+}
+
+
+/* set footer configuration */
+footer {
+    background-color: #77CFAD;
+    height: 100px;
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /*左右中央揃え*/
+    align-items: center;
+    /*上下中央揃え*/
+}
+
+footer h5 {
+    display: block;
+}
+
+/* unique css description for home file */

@@ -1,0 +1,59 @@
+/* for body part is to set it's background and margin */
+body {
+  margin-top: 5rem;
+  margin: 0;
+  background-image: url(https://img.freepik.com/free-vector/pastel-oil-painting-canvas-background_53876-93729.jpg?size=626&ext=jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+/* content class is to set it's design for text, padding, and border*/
+.content {
+  overflow: hidden;
+  text-align: justify;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-color: black;
+  border-width: 5px;
+  border-style: dashed;
+  border-radius: 12px;
+}
+
+/* set width and border value for image section in photo part  */
+.photo img {
+  width: 100%;
+  border-radius: 70px;
+}
+
+/* Set an opacity for an imge when the it get hover*/
+.photo img:hover {
+  opacity: 0.8;
+}
+
+/* for h2 section in content part use to set text-align, font family, and font size*/
+.content h2 {
+  font-family: "Lemonada", cursive;
+  text-align: left;
+  font-size: 35px;
+}
+
+/* for p section in content part use to set font and text details*/
+.content p {
+  font-family: "Quattrocento Sans", sans-serif;
+  text-indent: 100px;
+  float: left;
+  margin-top: 0px;
+  font-size: 28px;
+}
+
+/* Middle images styles */
+.photo {
+  display: block;
+}
+
+/* set a margin for the article part*/
+article {
+  margin: 80px 30px auto 30px;
+}

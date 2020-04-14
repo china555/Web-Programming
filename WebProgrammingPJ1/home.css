@@ -1,0 +1,44 @@
+/* unique css description for home file */
+
+    /* assign size and shape for col-8 */
+.col-8 {
+    height: 50vh;
+    margin: 0 auto;
+}
+    /* assign styling for top */
+.top {
+    border-bottom: 10px solid #77CFAD;
+    background-color: rgba(149, 218, 191, 0.857);
+}
+    /* assing transformation action */
+.card{
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.card:hover{
+    transform: scale(1.15);
+}
+
+    /* assing size, shape, type, positoin for top_image */
+.top_image {
+    height: 100%;
+    width: 100%;
+    background-image: url(image/top.jpg);
+    background-repeat: no-repeat;
+    background-size: 170%;
+    background-position: 50% 55%;
+    /* background-attachment: fixed;     背景の位置指定 */
+    justify-content: center;
+    opacity: 0.9;
+}
+
+    /* assign some changes when the window width is larger than 768px */
+@media screen and (min-width: 768px) {
+    .odd {
+        margin-bottom: 200px;
+        margin-top: 50px;
+    }
+    .even {
+        margin-top: 250px;
+    }
+}
