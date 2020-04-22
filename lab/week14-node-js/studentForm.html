@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Students
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="StudentService.js"></script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        body {
+            margin-left: 40px;
+            margin-top: 30px;
+            margin-right: 40px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+            font-size: 20px;
+            font-family: 'Noto Sans TC', sans-serif;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            line-height: 1.5;
+            border-radius: .45rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            margin: 0 10px;
+        }
+
+        .name {
+            display: inline-block;
+            width: 100%;
+            font-size: 24px;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 20px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .in {
+            width: 95%;
+        }
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap');
+    </style>
+    <script type="application/javascript">
+        async function callStudentWS(url, method, sentData = {}) {
+            let data;
+            if (method == "select_all") {
+                let response = await fetch(url, {
+                    method: 'GET'
+                });
+                data = await response.json();
+            } else if (method == "select") {
+                let response = await fetch(url, {
+                    method: 'GET'
+                });
+                data = await response.json();
+            } else if (method == "insert" || method == "update" || method == "delete") {
+                let aMethod;
+                if (method == "insert") {
+                    aMethod = "POST";
+                } else if (method == "update") {
+                    aMethod = "PUT";
+                } else if (method == "delete") {
+                    aMethod = "DELETE";
+                }
+                let response = await fetch(url, {
+                    method: aMethod,
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(sentData)
+                });
+                data = await response.json();
+            }
+
+            return data;
+        }
+        $(document).ready(function () {
+            var STU_ID, STU_FNAME, STU_LNAME, STU_AGE;
+
+            function clearInput() {
+                $("#STU_ID").val('');
+                $("#FirstName").val('');
+                $("#LastName").val('');
+                $("#AGE").val('');
+            }
+
+            $("#insert").click(function () {
+                STU_ID = $("#STU_ID").val();
+                STU_FNAME = $("#FirstName").val();
+                STU_LNAME = $("#LastName").val();
+                STU_AGE = $("#AGE").val();
+                let student_data = {
+                    student: {
+                        STU_ID: STU_ID,
+                        STU_FNAME: STU_FNAME,
+                        STU_LNAME: STU_LNAME,
+                        STU_AGE: STU_AGE
+                    }
+                };
+                callStudentWS("http://localhost:3000/student", "insert", student_data)
+                    .then((data) => {
+                        console.log(data);
+                        if (data.data > 0) {
+                            alert(data.message);
+                            clearInput();
+                        }
+                    });
+            });
+
+            $("#update").click(function () {
+                STU_ID = $("#STU_ID").val();
+                STU_FNAME = $("#FirstName").val();
+                STU_LNAME = $("#LastName").val();
+                STU_AGE = $("#AGE").val();
+                let student_data = {
+                    student: {
+                        STU_ID: STU_ID,
+                        STU_FNAME: STU_FNAME,
+                        STU_LNAME: STU_LNAME,
+                        STU_AGE: STU_AGE
+                    },
+                    student_id: STU_ID
+                };
+                callStudentWS("http://localhost:3000/student", "update", student_data)
+                    .then((data) => {
+                        console.log(data);
+                        if (data.data > 0) {
+                            alert(data.message);
+                            clearInput();
+                        }
+                    })
+            });
+
+            $("#delete").click(function () {
+                STU_ID = $("#STU_ID").val();
+                let student_data = {
+                    student_id: STU_ID
+                };
+                callStudentWS("http://localhost:3000/student", "delete", student_data)
+                    .then((data) => {
+                        console.log(data);
+                        if (data.data > 0) {
+                            alert(data.message);
+                            clearInput();
+                        }
+                    })
+            });
+
+            $("#select_all").click(function () {
+                callStudentWS("http://localhost:3000/students", "select_all")
+                    .then((data) => {
+                        console.log(data);
+                        if (data.data.length > 0) {
+                            alert(data.message);
+                            let output;
+                            output = "<h1>Student List</h1>"
+                            output += "<table class='table'>";
+                            output += "<thead>";
+                            output += "<tr>";
+                            output +=
+                                "<th scope='col'>#</th><th scope='col'>First name</th><th scope='col'>Last name</th><th scope='col'>Age</th>";
+                            output += "</tr>";
+                            output += "</thead>";
+                            output += "<tbody>";
+                            data.data.forEach(element => {
+                                output += "<tr>";
+                                output += "<td>" + element.STU_ID + "</td>";
+                                output += "<td>" + element.STU_FNAME + "</td>";
+                                output += "<td>" + element.STU_LNAME + "</td>";
+                                output += "<td>" + element.STU_AGE + "</td>";
+                                output += "</tr>";
+                            });
+                            output += "</tbody>";
+                            output += "</table>";
+                            $("#output").html(output);
+                            clearInput();
+                        }
+                    });
+            });
+
+            $("#select").click(function () {
+                STU_ID = $("#STU_ID").val();
+                callStudentWS("http://localhost:3000/student/" + STU_ID, "select")
+                    .then((data) => {
+                        console.log(data);
+                        if (data) {
+                            alert(data.message);
+                            $("#STU_ID").val(data.data.STU_ID);
+                            $("#FirstName").val(data.data.STU_FNAME);
+                            $("#LastName").val(data.data.STU_LNAME);
+                            $("#AGE").val(data.data.STU_AGE);
+                        }
+                    });
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <form action="" method="post">
+        <div class="container">
+            <div style="width: 100%; padding-bottom: 30px;">
+                <div class="name">
+                    Student ID:
+                </div>
+                <div class="in">
+                    <input type="text" class="form-control" id="STU_ID" placeholder="Student ID">
+                </div>
+            </div>
+            <div style="width: 100%; padding-bottom: 30px;">
+                <div class="name">
+                    Student Firstname:
+                </div>
+                <div class="in">
+                    <input type="text" class="form-control" id="FirstName" placeholder="FirstName">
+                </div>
+            </div>
+            <div style="width: 100%; padding-bottom: 30px;">
+                <div class="name">
+                    Student Lastname:
+                </div>
+                <div class="in">
+                    <input type="text" class="form-control" id="LastName" placeholder="LastName">
+                </div>
+            </div>
+            <div style="width: 100%; padding-bottom: 30px;">
+                <div class="name">
+                    Student Age:
+                </div>
+                <div class="in">
+                    <input type="text" class="form-control" id="Age" placeholder="Age">
+                </div>
+            </div>
+            <div>
+                <button class="btn" id="insert">Insert</button>
+                <button class="btn" id="update">Update</button>
+                <button class="btn" id="delete">Delete</button>
+                <button class="btn" id="select">Select</button>
+                <button class="btn" id="select_all">Select all</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="output">
+
+    </div>
+
+</body>
+
+</html>
