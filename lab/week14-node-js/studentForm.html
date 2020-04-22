@@ -39,7 +39,7 @@
 
         .name {
             display: inline-block;
-            width: 100%;
+            width: 15%;
             font-size: 24px;
             font-family: 'Noto Sans TC', sans-serif;
         }
@@ -100,7 +100,7 @@
             return data;
         }
         $(document).ready(function () {
-            var STU_ID, STU_FNAME, STU_LNAME, STU_AGE;
+            let STU_ID, STU_FNAME, STU_LNAME, STU_AGE;
 
             function clearInput() {
                 $("#STU_ID").val('');
@@ -116,9 +116,9 @@
                 STU_AGE = $("#AGE").val();
                 let student_data = {
                     student: {
-                        STU_ID: STU_ID,
-                        STU_FNAME: STU_FNAME,
-                        STU_LNAME: STU_LNAME,
+                        StudentID: STU_ID,
+                        Firstname: STU_FNAME,
+                        DOB: STU_LNAME,
                         STU_AGE: STU_AGE
                     }
                 };
@@ -139,12 +139,12 @@
                 STU_AGE = $("#AGE").val();
                 let student_data = {
                     student: {
-                        STU_ID: STU_ID,
-                        STU_FNAME: STU_FNAME,
-                        STU_LNAME: STU_LNAME,
-                        STU_AGE: STU_AGE
+                        StudentID: STU_ID,
+                        Firstname: STU_FNAME,
+                        Lastname: STU_LNAME,
+                        DOB: STU_AGE
                     },
-                    student_id: STU_ID
+                    StudentID: STU_ID
                 };
                 callStudentWS("http://localhost:3000/student", "update", student_data)
                     .then((data) => {
@@ -159,7 +159,7 @@
             $("#delete").click(function () {
                 STU_ID = $("#STU_ID").val();
                 let student_data = {
-                    student_id: STU_ID
+                    StudentID: STU_ID
                 };
                 callStudentWS("http://localhost:3000/student", "delete", student_data)
                     .then((data) => {
@@ -225,7 +225,8 @@
 <body>
     <form action="" method="post">
         <div class="container">
-            <div style="width: 100%; padding-bottom: 30px;">
+            <!-- Use display flex for inline -->
+            <div style="width: 100%; padding-bottom: 30px;">  
                 <div class="name">
                     Student ID:
                 </div>
