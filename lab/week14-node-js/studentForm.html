@@ -101,6 +101,7 @@
         }
         $(document).ready(function () {
             let STU_ID, STU_FNAME, STU_LNAME, STU_AGE;
+            // console.log("Hello")
 
             function clearInput() {
                 $("#STU_ID").val('');
@@ -118,8 +119,8 @@
                     student: {
                         StudentID: STU_ID,
                         Firstname: STU_FNAME,
-                        DOB: STU_LNAME,
-                        STU_AGE: STU_AGE
+                        LastName: STU_LNAME,
+                        DOB: STU_AGE
                     }
                 };
                 callStudentWS("http://localhost:3000/student", "insert", student_data)
@@ -189,10 +190,10 @@
                             output += "<tbody>";
                             data.data.forEach(element => {
                                 output += "<tr>";
-                                output += "<td>" + element.STU_ID + "</td>";
-                                output += "<td>" + element.STU_FNAME + "</td>";
-                                output += "<td>" + element.STU_LNAME + "</td>";
-                                output += "<td>" + element.STU_AGE + "</td>";
+                                output += "<td>" + element.StudentID + "</td>";
+                                output += "<td>" + element.Firstname + "</td>";
+                                output += "<td>" + element.Lastname + "</td>";
+                                output += "<td>" + element.DOB + "</td>";
                                 output += "</tr>";
                             });
                             output += "</tbody>";
@@ -204,16 +205,19 @@
             });
 
             $("#select").click(function () {
+                // console.log("Hello World");
                 STU_ID = $("#STU_ID").val();
                 callStudentWS("http://localhost:3000/student/" + STU_ID, "select")
-                    .then((data) => {
+                    .then(({data,message}) => {
                         console.log(data);
+                        const studentInfo = data[0];
+                        console.log(studentInfo)
                         if (data) {
-                            alert(data.message);
-                            $("#STU_ID").val(data.data.STU_ID);
-                            $("#FirstName").val(data.data.STU_FNAME);
-                            $("#LastName").val(data.data.STU_LNAME);
-                            $("#AGE").val(data.data.STU_AGE);
+                            alert(message);
+                            $("#STU_ID").val(studentInfo.StudentID);
+                            $("#FirstName").val(studentInfo.Firstname);
+                            $("#LastName").val(studentInfo.Lastname);
+                            $("#AGE").val(studentInfo.DOB);
                         }
                     });
             });
@@ -226,7 +230,7 @@
     <form action="" method="post">
         <div class="container">
             <!-- Use display flex for inline -->
-            <div style="width: 100%; padding-bottom: 30px;">  
+            <div style="width: 100%; padding-bottom: 30px;">
                 <div class="name">
                     Student ID:
                 </div>
@@ -255,15 +259,15 @@
                     Student Age:
                 </div>
                 <div class="in">
-                    <input type="text" class="form-control" id="Age" placeholder="Age">
+                    <input type="text" class="form-control" id="AGE" placeholder="Age">
                 </div>
             </div>
             <div>
-                <button class="btn" id="insert">Insert</button>
-                <button class="btn" id="update">Update</button>
-                <button class="btn" id="delete">Delete</button>
-                <button class="btn" id="select">Select</button>
-                <button class="btn" id="select_all">Select all</button>
+                <button class="btn" id="insert" type="button">Insert</button>
+                <button class="btn" id="update" type="button">Update</button>
+                <button class="btn" id="delete" type="button">Delete</button>
+                <button class="btn" id="select" type="button">Select</button>
+                <button class="btn" id="select_all" type="button">Select all</button>
             </div>
         </div>
     </form>

@@ -4,12 +4,14 @@ const dotenv = require('dotenv');
 const route = express.Router();
 const app = express();
 const bodyParse = require('body-parser');
+const cors = require('cors')
 //connect to database
 dotenv.config()
 
 app.use(express.urlencoded({
     extended: true
 }));
+app.use(cors());
 app.use(bodyParse.json())
 
 app.use('/', route);
@@ -23,7 +25,7 @@ const connection = mysql.createPool({
 
 route.post('/student', async (req, res) => {
     let student = req.body.student;
-    // console.log(req.body);
+    console.log(req.body);
     if (!student) {
         return res.status(400).send({
             error: true,
@@ -31,7 +33,9 @@ route.post('/student', async (req, res) => {
         });
     }
     student.Phone = "0123456789"
+    // console.log(student.DOB)
     student.DOB = `${2020 - Number(student.DOB)}-01-01`
+    // console.log(student.DOB)
     // console.log(student);
     const sql = `INSERT INTO personal_info SET ?`
     // console.log(sql)
@@ -80,9 +84,9 @@ route.delete('/student', async (req, res) => {
     });
 });
 
-route.get('/student/:id', async (req, res) =>{
+route.get('/student/:id', async (req, res) => {
     let student_id = req.params.id;
-    console.log(student_id)
+    // console.log(student_id)
     if (!student_id) {
         return res.status(400).send({
             error: true,
@@ -90,22 +94,24 @@ route.get('/student/:id', async (req, res) =>{
         });
     }
     const sql = 'SELECT * FROM personal_info where StudentID=?'
-    const [data] = await connection.query(sql, student_id,) 
-        return res.send({
-            error: false,
-            data: data,
-            message: 'Student retrieved'
-        });
+    const [data] = await connection.query(sql, student_id)
+    // console.log(data)
+    return res.send({
+        error: false,
+        data: data,
+        message: 'Student retrieved'
+    });
 });
 
 
 route.get('/students', async (req, res) => {
     const sql = 'SELECT * FROM personal_info'
-    await connection.query(sql)
-        return res.send({
-            error: false,
-            message: 'Student list.'
-        });
+    const [data] = await connection.query(sql)
+    return res.send({
+        error: false,
+        data: data,
+        message: 'Student list.'
+    });
 });
 
 app.listen(process.env.PORT)
