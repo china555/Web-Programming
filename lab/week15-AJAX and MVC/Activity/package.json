@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src"
   },
-  "author": "",
+  "author": "6188086",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
