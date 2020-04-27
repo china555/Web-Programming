@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html language="en">
+
+<head>
+  <title>Student</title>
+  <%- include('./partials/script'); %>
+  <%- include('./partials/style'); %>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <%- include('./partials/header'); %>
+    <!-- Navbar -->
+    <%- include('./partials/navbar'); %>
+    <!-- Content -->
+    <div class="row" style="margin-top:30px">
+      <div class="col-md-12">
+        <h1>There are
+          <!-- Show # of Students -->
+          <%= student.length %>students</h1>
+        <!-- Get Data from Controller -->
+        <div class="card-columns">
+          <!-- Show List of Students in Each Card -->
+          <!--  Get Data from the controller  -->
+          <% for(let i=0; i<student.length; i++) { %>
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">
+                ID:<%= student[i].StudentID %>
+                <!-- Show Student ID -->
+              </h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <!-- Show First name Last name -->
+                <%= student[i].Firstname + " " +student[i].Lastname %>
+              </h6>
+              <p class="card-text">
+                Date of Birth:
+                <!-- Show DoB -->
+                <%= student[i].DOB %>
+              </p>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <%- include('./partials/footer'); %>
+  </div>
+</body>
+
+</html>

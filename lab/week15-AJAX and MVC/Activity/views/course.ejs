@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html language="en">
+
+<head>
+  <title>Course</title>
+  <%- include('./partials/script'); %>
+  <%- include('./partials/style'); %>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <%- include('./partials/header'); %>
+    <!-- Navbar -->
+    <%- include('./partials/navbar'); %>
+    <!-- Content -->
+    <div class="row" style="margin-top:30px">
+      <div class="col-md-8">
+        <h1>Course Outline</h1>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Module #</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody> <!-- Get Data from Controller -->
+            <% for(let i=0; i<courses.length; i++) { %>
+            <tr>
+              <td><%= courses[i].name   %></td>
+              <td><%= courses[i].module %></td>
+              <td><%= courses[i].type   %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Footer -->
+    <%- include('./partials/footer'); %>
+  </div>
+</body>
+</html>
