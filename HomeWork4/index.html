@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Students
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="Jquerry.js"></script>
+
+</head>
+
+<body>
+    <div class="name" style="font-size: 40px; text-align: center;">Employee Form</div>
+    <form action="" method="post">
+        <div class="container">
+            <!-- Use display flex for inline -->
+            <div style="width: 100%; padding-bottom: 30px;">
+                <div class="name">
+                    Employee ID:
+                </div>
+                <div>
+                    <input type="text" class="inputemployee" id="employeeID" placeholder="6X88XXX">
+                </div>
+            </div>
+            <div style="width: 100%; padding-bottom: 30px;">
+                <div class="name">
+                    Firstname:
+                </div>
+                <div>
+                    <input type="text" class="inputemployee" id="employeeFirstName" placeholder="First Name">
+                </div>
+            </div>
+            <div style="width: 100%; padding-bottom: 30px;">
+                <div class="name">
+                    Lastname:
+                </div>
+                <div>
+                    <input type="text" class="inputemployee" id="employeeLastName" placeholder="Last Name">
+                </div>
+            </div>
+
+            <div style="width: 100%; padding-bottom: 30px;">
+                <div class="name">
+                    Phone number:
+                </div>
+                <div>
+                    <input type="text" class="inputemployee" id="employeePhoneNumber" placeholder="Phone Number">
+                </div>
+            </div>
+
+            <div>
+                <button class="btn" id="insert" type="button">Insert</button>
+                <button class="btn" id="delete" type="button">Delete</button>
+                <button class="btn" id="select" type="button">Select</button>
+                <button class="btn" id="select_all" type="button">Select all</button>
+                <button class="btn" id="update" type="button">Update Role</button>
+
+            </div>
+            <div>
+                <input type="text" class="inputrole" id="employeeRole" placeholder="Update Role">
+            </div>
+
+
+        </div>
+    </form>
+
+    <div id="output">
+
+    </div>
+
+</body>
+
+</html>

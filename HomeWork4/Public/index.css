@@ -1,0 +1,99 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+body {
+    margin-left: 40px;
+    margin-top: 30px;
+    margin-right: 40px;
+    background-color: #55b5d0;
+}
+
+.btn {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    font-size: 20px;
+    font-family: 'Noto Sans TC', sans-serif;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    border-radius: .45rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    margin: 0 10px;
+}
+
+.name {
+    display: inline-block;
+    color: #ffffff;
+    width: 100%;
+    font-size: 20px;
+    font-family: 'Noto Sans TC', sans-serif;
+    margin: 0px 0px 20px 0px;
+}
+
+.inputrole{
+    display: block;
+    appearance: none;
+    width: 95%;
+    padding: 10px 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: rgb(255, 255, 255, 0.7);
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.inputemployee {
+    display: block;
+    text-align: center;
+    appearance: none;
+    width: 95%;
+    padding: 10px 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: rgb(255, 255, 255, 0.7);
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+form {
+    padding: 20px 0;
+}
+
+table {
+    background-color: rgb(241, 198, 248);
+}
+
+table,
+th,
+td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+tr>td {
+    padding: 12px;
+    font-size: 20px;
+}
+
+.big {
+    font-size: 30px;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap');
