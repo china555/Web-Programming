@@ -16,11 +16,6 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-
-function render() {
-
-}
-
 app.use('/', router);
 router.get('/', function (req, res) {
     connection.connect(function (err) {

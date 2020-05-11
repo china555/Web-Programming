@@ -21,7 +21,7 @@ const connection = mysql.createPool({
 })
 
 function render(data) {
-    var output = `<!DOCTYPE html>
+    const output = `<!DOCTYPE html>
     <html lang="en">
     
     <head>
@@ -91,13 +91,12 @@ router.post('/submit-form', async (req, res) => {
     const phoneNumber = req.body.phone
     //const sql = `INSERT INTO personal_info(StudentID,Firstname,Lastname,DOB,Phone) VALUES (id,firstName,lastName,dateOfBirth,phoneNumber)`
     const sql = `INSERT INTO personal_info(StudentID,Firstname,Lastname,DOB,Phone) VALUES (?,?,?,?,?)` // เป็น pattern
-    await connection.execute(sql,[id,firstName,lastName,dateOfBirth,phoneNumber]) // เป็นการเอาค่าไปใส่ใน pattern
+    await connection.execute(sql, [id, firstName, lastName, dateOfBirth, phoneNumber]) // เป็นการเอาค่าไปใส่ใน pattern
     res.send("Insert already");
 })
 
 const select = "Select * From personal_info"
 router.get('/', async (req, res) => {
-
     //destruction array
     const [data] = await connection.query(select)
     res.send(render(data))

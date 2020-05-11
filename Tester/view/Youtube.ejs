@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/header'); -%>
+    <title>Login</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar'); -%>
+    </header>
+
+    <main role="main">
+        <h1>this is youtube search function</h1>
+        <h2>your query is</h2>
+        <% if (typeof message !== 'undefined') { %>
+        <p class="error">
+            <%= message %>
+        </p>
+        <% } %>
+
+    </main>
+
+
+    <%- include('../partials/bootstrap'); -%>
+</body>
+
+</html>

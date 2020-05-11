@@ -208,7 +208,10 @@
                 // console.log("Hello World");
                 STU_ID = $("#STU_ID").val();
                 callStudentWS("http://localhost:3000/student/" + STU_ID, "select")
-                    .then(({data,message}) => {
+                    .then(({
+                        data,
+                        message
+                    }) => {
                         console.log(data);
                         const studentInfo = data[0];
                         console.log(studentInfo)
