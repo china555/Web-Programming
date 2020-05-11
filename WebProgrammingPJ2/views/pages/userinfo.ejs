@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/header'); -%>
+        <title>User list</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">Search Movie</a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Main</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search">Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main role="main">
+        <div class="cnotainer">
+            <div class="row d-flex justify-content-center" style="width: 100%;">
+                <div class="form-group col-md-8">
+                    <input type="text" class="form-control" id="search" placeholder="search">
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="button" class="btn btn-danger" value="Reset" id="button2">
+                </div>
+
+            </div>
+            <div class="row d-flex justify-content-center" style="width: 100%;">
+                <div class="col-10">
+                    <table class="table table-bordered" id="result">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">User ID</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">User Type</th>
+                                <th scope="col">Contact</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (typeof data !== 'undefined') { %>
+                                <% for (var i in data) { %>
+
+                                    <tr>
+                                        <th scope="row">
+                                            <%- i %>
+                                        </th>
+                                        <td>
+                                            <a href="#" style="display: block; ">
+                                                <%- data[i].user_id %>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <%- data[i].firstname %>
+                                                <%- data[i].lastname %>
+                                        </td>
+                                        <td>
+                                            <%- data[i].role %>
+                                        </td>
+                                        <td>
+                                            <%- data[i].email %>
+                                        </td>
+                                        <td>
+                                            <a href="/admin/update/<%= data[i].user_id%>">
+                                                <button type="button" class="btn btn-primary">UPDATE</button>
+                                            </a>
+                                            <a href="/admin/delete/<%= data[i].user_id%>">
+                                                <button type="button" class="btn btn-warning">DELETE</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+
+                                        <% } %>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <footer></footer>
+    <%- include('../partials/bootstrap'); -%>
+</body>
+
+</html>
+
+<script>
+    $(function() {
+        $('#search').on("keyup", function() {
+            var re = new RegExp($('#search').val());
+            $('#result tbody tr').each(function() {
+                var tr = $(this);
+                tr.hide();
+                $('td', this).each(function() {
+                    var txt = $(this).html();
+                    if (txt.match(re) != null) {
+                        tr.show();
+                    }
+                });
+            });
+        });
+        $('#button2').on("click", function() {
+            $('#result tr').show();
+        });
+    });
+</script>

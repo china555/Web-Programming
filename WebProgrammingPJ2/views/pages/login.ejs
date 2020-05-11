@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/header'); -%>
+        <title>
+            Login
+        </title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="/">Search Movie</a>
+        </nav>
+    </header>
+    <main role="main">
+        <div class="container">
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Please fill in appropriate email</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="admin" name="admin">
+                    <label class="form-check-label" for="exampleCheck1">I am admin</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <% if (typeof message !== 'undefined') { %>
+                <p class="error">
+                    <%= message %>
+                </p>
+                <% } %>
+        </div>
+    </main>
+    <%- include('../partials/bootstrap'); -%>
+
+</body>
+
+</html>

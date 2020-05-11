@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/header'); -%>
+        <title>Admin</title>
+        <!-- title name of this page -->
+</head>
+
+<body style=" margin-top: 5rem; height: 100%; width:100%; background: #FFF url('control.png') no-repeat; background-size: cover; background-attachment: fixed; background-position: center center;">
+    <header>
+        <%- include('../partials/navbar'); -%>
+    </header>
+
+    <main role=" main ">
+        <div class="cnotainer ">
+            <div class="row d-flex justify-content-center">
+                <h1 style="color:white;">Welcome to admin page</h1>
+            </div>
+            <div class="row ">
+                <div class="col-6 d-flex justify-content-end " style="height:100px; ">
+                    <a href="/admin/register " class="d-flex justify-content-center" style="text-decoration: none;">
+                        <button type="button" class="btn btn-outline-dark" style="height: 50px;">Register Account ></button>
+                    </a>
+                </div>
+                <div class="col-6 d-flex justify-content-start " style="height:100px; ">
+                    <a href="/admin/search " class="d-flex justify-content-center " style="text-decoration: none;"><button type="button" class="btn btn-outline-dark" style="height: 50px;">Search Account ></button></a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer></footer>
+    <%- include('../partials/bootstrap'); -%>
+</body>
+
+</html>
+
+</html>

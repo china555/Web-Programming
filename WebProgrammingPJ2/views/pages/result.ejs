@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Search</title>
+    <!-- recieve form  -->
+    <% const twitter_data = data.twitter_data %>
+        <% const query = data.query %>
+            <script>
+                const twitter = '<%= twitter_data %>';
+                const text = "<%= query %>";
+            </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script src="/Jquery.js" type="text/javascript"></script>
+            <%- include('../partials/header'); -%>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar'); -%>
+    </header>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!-- buttom use with Jquery -->
+    <button type="button" id="GOOGLE" type="button" class="btn google">GOOGLE</button>
+    <button type="button" id="YOUTUBE" type="button" class="btn youtube">YOUTUBE</button>
+    <button type="button" id="SPOTIFY" type="button" class="btn spotify">SPOTIFY</button>
+    <button type="button" id="TWITTER" type="button" class="btn">TWITTER</button>
+
+    <div id="TwitterID" class="containertwitter" style="margin-top: 50px;">
+        <% for( let index = 0; index < data.twitter_data.length; index++ ) { %>
+            <div class="cardTwitter">
+                <div style="width: 100%;">
+                    <p style="font-weight: 700;">Tweet</p>
+                    <hr>
+                    <img src="<%= data.twitter_data[index].user.profile_image_url_https %>" style="border-radius: 40px;" alt="">
+                    <p style="width: 100%;"> <b><%= data.twitter_data[index].user.screen_name %></b></p>
+                    <p style="color: rgb(236, 236, 241);">@
+                        <%= data.twitter_data[index].user.name %>
+                    </p>
+                    <p>Tweet text:
+                        <%= data.twitter_data[index].text %>
+                            <% if(data.twitter_data[index].entities.urls[0] !== undefined){ %>
+                                <a href="<%= data.twitter_data[index].entities.urls[0].expanded_url %>" target="_blank">Read More..</a>
+                                <% } %>
+                    </p>
+                    <% if(data.twitter_data[index].entities.media !== undefined ) { %>
+                        <img src="<%= data.twitter_data[index].entities.media[0].media_url %>" style="width: 100%; height: 200px;" alt="">
+                        <% } %>
+                </div>
+
+            </div>
+            <% } %>
+    </div>
+
+    <!-- To show the spotify album output -->
+    <div id="spotify_id" style="text-align: center;">
+        <iframe src="https://open.spotify.com/embed/album/<%= data.spotify_data%>" width="100%" height="700" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+
+    <div id="google">
+    </div>
+    <div id="output">
+    </div>
+    <%- include('../partials/bootstrap'); -%>
+
+
+</body>
+
+</html>
