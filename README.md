@@ -2,6 +2,8 @@
 Project
 ## Setup
 ```
-### npm install
+npm install
+```
 ```
 npm start 
+```
