@@ -1,0 +1,39 @@
+/* body {
+    text-align: center;
+}
+
+p {
+    text-emphasis: none;
+}
+
+.class {
+    width: 100%;
+    background-color: aquamarine;
+}
+
+#location {
+    background-color: blueviolet;
+}
+
+#location :hover {
+    color: chartreuse;
+} */
+
+/* link being mouse over */
+a:hover {
+    color: #00FF00;
+    /* green */
+}
+
+/* link being clicked/selected*/
+a:active {
+    color: #FF0000;
+    /* red */
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}

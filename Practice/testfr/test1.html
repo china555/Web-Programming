@@ -1,0 +1,13 @@
+<div id="div_color">
+    <span id="color_R">Red</span>
+    <span id="color_G">Green</span>
+    <span id="color_B">Blue</span>
+</div>
+<script type="application/javascript">
+    /* Use this method to get the <span> element */
+    let spanColor = document.getElementsByTagName("span");
+    /* Set a "class" attribute to all <span> nodes */
+    for (var i = 0; i < spanColor.length; i++) {
+        spanColor[i].setAttribute("class", "colors");
+    }
+</script>

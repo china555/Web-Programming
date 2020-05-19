@@ -1,0 +1,128 @@
+<html>
+
+<head>
+    <title>Simple Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        input[type=button] {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+
+        input[type=text] {
+            width: 280px;
+            height: 50px;
+            display: block;
+            margin: 15px auto;
+            padding: 0 10px;
+            font-size: 28px;
+            text-align: right;
+        }
+    </style>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body style="text-align: center">
+    <form name="FormCalculator">
+        <h1>Simple Calculator</h1>
+        <input name="Screen" id="output" type="Text" size="24" value="0" readonly>
+
+        <input id="btn7" type="Button" value="  7  " onclick="NumPressed(7)">
+        <input id="btn8" type="Button" value="  8  " onclick="NumPressed(8)">
+        <input id="btn9" type="Button" value="  9  " onclick="NumPressed(9)">
+        <input id="btnmultiply" type="Button" value="  *  " onclick="Operation()">
+        <br />
+
+        <input id="btn4" type="Button" value="  4" onclick="NumPressed(4)">
+        <input id="btn5" type="Button" value="  5   " onclick="NumPressed(5)">
+        <input id="btn6" type="Button" value="  6  " onclick="NumPressed(6)">
+        <input id="btnminus" type="Button" value="   -   " onclick="Operation()">
+
+        <br />
+
+        <input id="btn1" type="Button" value="  1  " onclick="NumPressed(1)">
+        <input id="btn2" type="Button" value="  2  " onclick="NumPressed(2)">
+        <input id="btn3" type="Button" value="  3  " onclick="NumPressed(3)">
+        <input id="btnplus" type="Button" value="  +  " onclick="Operation('+')">
+
+        <br />
+
+        <input id="btnC" type="Button" value="  C  " onclick="Clear()">
+        <input id="btn0" type="Button" value="  0  " onclick="NumPressed(0)">
+        <input id="btndecimal" type="Button" value="   .  " onclick="">
+        <input id="btndivide" type="Button" value="   /   " onclick="Operation()">
+        <br />
+        <input id="btnequals" style="width: 294px" type="Button" value="=" onclick="Operation('=')">
+    </form>
+
+    <script>
+        var Calculator = document.FormCalculator;
+        var Accumulate = 0; // to store the result of accumulation
+        var FlagNewNum = false; // To check whether the number is new number
+        var PendingOp = ""; // to store the pending operation
+
+        var num1 = "";
+        var num2 = "";
+        var num = "";
+        
+
+        function NumPressed(Num) {
+            // If number button is pressed, show number on the screen
+            $(document).ready(function () 
+            {
+                if(PendingOp === "")
+                {
+                    num1 += Num;
+                    num=num1;
+                }
+                else{
+                    num2+=Num;
+                    num=num2;
+                }  
+                console.log(num1,num2)
+                $("#output").val(num);
+            })
+
+            //if it is still the same number, add new digit to the the number
+            //else show the new number on the screen
+        }
+     
+        function Operation(Op) {
+            // If operation button is pressed for first time, set the pending operation
+            $(document).ready(function () {
+                if (Op !== "=") 
+                {
+                    PendingOp = Op
+                }
+                else
+                {
+                    console.log(typeof num1)
+                    num=Number(num1)+Number(num2);
+                    num2="";
+                    num1 = num ; 
+                } 
+                $("#output").val(num);
+            })
+            //else do the arithmetic of the pending opearion 
+            //and set the lastest operation as the new pending opeation 
+        }
+
+        function Decimal() {
+            //If it is the first time of inserting number, start with 0 and follow by point (0.)
+            //else if it has no decimal point before, add decimal point to the number
+            //then show number on the screen   
+        }
+
+        function Clear() {
+            //Clear Entry
+            $(document).ready(function () {
+                $("#output").val(Accumulate)
+            })
+        }
+    </script>
+</body>
+
+</html>
